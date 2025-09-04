@@ -1,0 +1,61 @@
+/**********************************************************************
+  
+  Program Title : Demonstrating Variable Data Types in Java with Sizes
+  File Name: "DataTypeSize.java"
+  
+  Programmer : Sathish Sarma
+  Contact Details : sathish.sarma@newinti.edu.my
+  Date : 28 August 2025
+  
+ **********************************************************************/
+
+public class DataTypeSize {
+    public static void main(String[] args) {
+        System.out.println("Demonstrating Data Type Size in Java");
+        System.out.println("-----------------------------------------");
+
+        int i = 123456789;
+        double d = 19.99;
+        char c = 'A';
+        byte b = 120;
+        short s = 32000;
+        long l = 9876543210L;
+        float f = 5.75f;
+		
+		//Instruction
+		System.out.println("This application shows the basic code that is needed to calculate data type size, the range (min & max value) for each data type.\n");
+		
+		//Finding data type size using BYTES
+		System.out.println("The variable i is int data types has the value " + i + "\nSize of int: " + Integer.BYTES + " bytes.");
+		System.out.println("The variable d is double data types has the value " + d + "\nSize of double: " + Double.BYTES + " bytes.");
+		System.out.println("The variable d is char data types has the value " + c + "\nSize of char: " + Character.BYTES + " bytes.");
+		System.out.println("The variable d is btye data types has the value " + b + "\nSize of btye: " + Byte.BYTES + " bytes.");
+		System.out.println("The variable d is short data types has the value " + s + "\nSize of short: " + Short.BYTES + " bytes.");
+		System.out.println("The variable d is long data types has the value " + l + "\nSize of long: " + Long.BYTES + " bytes.");
+		System.out.println("The variable d is float data types has the value " + f + "\nSize of float: " + Float.BYTES + " bytes.");
+		
+		
+		//Finding data type size using SIZE
+		System.out.println("The variable i is int data types has the value " + i + "\nSize of int: " + Integer.SIZE + " bits.");
+		System.out.println("The variable d is double data types has the value " + d + "\nSize of double: " + Double.SIZE + " bits.");
+		System.out.println("The variable d is char data types has the value " + c + "\nSize of char: " + Character.SIZE + " bits.");
+		System.out.println("The variable d is btye data types has the value " + b + "\nSize of btye: " + Byte.SIZE + " bits.");
+		System.out.println("The variable d is short data types has the value " + s + "\nSize of short: " + Short.SIZE + " bits.");
+		System.out.println("The variable d is long data types has the value " + l + "\nSize of long: " + Long.SIZE + " bits.");
+		System.out.println("The variable d is float data types has the value " + f + "\nSize of float: " + Float.SIZE + " bits.");
+		System.out.println("Size of char: " + Character.SIZE + " bits.");
+		System.out.println("Size of double: " + Double.SIZE + " bits.");
+		
+		//Finding data type range minimum and maximum value
+		
+		System.out.println("Minimum value of int range: " + Integer.MIN_VALUE + ".\nMaximum value for double range: " + Integer.MAX_VALUE + ".");
+        System.out.println("Minimum value of Double range: " + Double.MIN_VALUE + ".\nMaximum value for double range: " + Double.MAX_VALUE + ".");
+        System.out.println("Minimum value of Character range: " + Character.MIN_VALUE + ".\nMaximum value for Character range: " + Character.MAX_VALUE + ".");
+        System.out.println("Minimum value of Byte range: " + Byte.MIN_VALUE + ".\nMaximum value for Byte range: " + Byte.MAX_VALUE + ".");
+        System.out.println("Minimum value of Short range: " + Short.MIN_VALUE + ".\nMaximum value for Short range: " + Short.MAX_VALUE + ".");
+        System.out.println("Minimum value of Long range: " + Long.MIN_VALUE + ".\nMaximum value for Long range: " + Long.MAX_VALUE + ".");
+        System.out.println("Minimum value of Float range: " + Float.MIN_VALUE + ".\nMaximum value for Float range: " + Float.MAX_VALUE + ".");
+        
+        
+    }
+}

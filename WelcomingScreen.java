@@ -9,11 +9,13 @@ public class WelcomingScreen
 {
     public static void main(String[] args)
     {
-    // 
+    // Decorative border
     System.out.println("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
     System.out.println("|                                                                                   |");
+    // Title of the screen
     System.out.println("|                               @ Lab Exercise 1 @                                  |");
     System.out.println("|                                                                                   |");
+    // Student information section
     System.out.println("|           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          |");
     System.out.println("|           ^ Student Name : Liew Choon Kiat                             ^          |");
     System.out.println("|           ^ Student ID : J24041998                                     ^          |");
@@ -26,9 +28,11 @@ public class WelcomingScreen
     System.out.println("|           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          |");
     System.out.println("|                                                                                   |");
     System.out.println("|                                                                                   |");
+    // Motivational quote
     System.out.println("|                   LEARN what you're WEAK at,                                      |");
     System.out.println("|                            and FORGE it into your STRENGTH.                       |");
     System.out.println("|                                                                                   |");
+    // Creative pseudocode
     System.out.println("|           What is life?                                                           |");
     System.out.println("|           ```````````````                                                         |");
     System.out.println("|           int experience = 0;                                                     |");

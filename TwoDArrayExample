@@ -1,0 +1,25 @@
+public class TwoDArrayExample {
+    public static void main(String[] args) {
+        // Declare and initialize a 2D array (3 rows, 3 columns)
+        int[][] matrix = {
+            {1, 2, 3}, 
+            {4, 5, 6}, 
+            {7, 8, 9}
+        };
+
+        // Display the 2D array elements
+        System.out.println("2D Array Elements:");
+        for (int row = 0; row < matrix.length; row++) {
+            for (int col = 0; col < matrix[row].length; col++) {
+                System.out.print(matrix[row][col] + " ");
+            }
+            System.out.println(); // new line after each row
+        }
+        
+        System.out.println("New version 2D Array Elements:");
+        for (int row = 2; row >= 0; row--) {
+            for (int col = 2; col >= 0; col--) {
+                System.out.print(matrix[row][col] + " ");
+            }
+            System.out.println(); // new line after each row
+        }

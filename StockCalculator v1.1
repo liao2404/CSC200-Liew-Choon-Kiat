@@ -1,0 +1,97 @@
+/*********************************************************************/
+// Title: Stock Calculator
+// Task ID: LAB02_CSC200_CA3(5)_CLO3
+// Task Mode: Lab Exercise 2 (Individual)
+// Programmer: Liew Choon Kiat
+// Due Date: 27/9/2025
+/*********************************************************************/
+
+import java.util.Scanner;
+
+class StockCalculator {
+
+	// Total amount calculate method
+	public static double total_cal(double share_quantity, double share_price) {
+		return share_quantity * share_price;
+	}
+
+	public static void main(String[] args) {
+
+		Scanner myObj = new Scanner(System.in);
+
+		//Company Welcome Slogan
+		System.out.println("Welcome to The World BIGGEST Stock Exchange Online Platform!");
+
+		//Make sure customer know how to use the programme
+		System.out.println("Please follow the instruction to proceed.");
+		System.out.println();
+		System.out.println("Reply OK and press ENTER to proceed.");
+		String agree = myObj.next();
+
+		//True input flow
+		if (agree.equals("OK")) {
+
+			//===Buy scenario===
+			System.out.println("\nEnter the number of shares you wish to Buy.");
+			System.out.println("Caution: The Total Share amount MUST be the Multiples of 500 and not exceed 100,000!");
+			double sharebuy = myObj.nextDouble();
+
+			// Stop programme for input false
+			if (sharebuy %500 != 0 || sharebuy > 100000) {
+				System.out.println ("Sorry, Please try again and Enter the correct input");
+				return;
+			}
+
+			// Run programme for true input
+			System.out.println("\nEnter the purchase price per share.");
+			double buyprice = myObj.nextDouble();
+
+			double result_buy = total_cal(sharebuy, buyprice);
+			double comm_buy = result_buy * (2.5/100);
+			double total_buy = result_buy + comm_buy;
+
+			System.out.println("\nTotal amount paid for the stock (excluding commission) : " + result_buy);
+			System.out.println("Commission paid during purchase : " + comm_buy);
+			System.out.println("Total amount after commision : " + total_buy);
+
+			// === Sell scenario===
+			System.out.println("\nEnter the number of shares you wish to Sell.");
+			System.out.println("Caution: The Total Share amount MUST be the Multiples of 500 and not exceed 100,000!");
+			double sharesell = myObj.nextDouble();
+
+			// Stop programme for false input
+			if (sharesell %500 != 0 || sharesell > 100000) {
+				System.out.println ("Sorry, Please try again and Enter the correct input");
+				return;
+			}
+
+			// Run programme for true input
+			System.out.println("\nEnter the selling price per share.");
+			double sellprice = myObj.nextDouble();
+
+			double result_sell = total_cal(sharesell, sellprice);
+			double comm_sell = result_sell * (2.3/100);
+			double total_sell = result_sell - comm_sell;
+			
+			System.out.println("\nTotal amount received from the sale (excluding commission) : " + result_sell);
+			System.out.println("Commission paid during sale : " + comm_sell);
+			System.out.println("Total amount after commision : " + total_sell);
+
+			// ===Calculation of net profit and loss===
+			double net_result = total_sell - total_buy;
+
+			if (net_result > 0) {
+				System.out.println ("\nCongratulations! You have made a PROFIT of total : " + net_result + "USD");
+
+			} else if (net_result < 0) {
+				System.out.println ("\nYou have made a LOSS of total : " + net_result + "USD");
+			} else {
+				System.out.println ("\nContra, no PROFIT or LOSS in this stock!");
+			}
+			// False input prompt
+		} else {
+			System.out.println ("Sorry, Please try again and Enter the correct input");
+			return;
+		}
+	}
+}

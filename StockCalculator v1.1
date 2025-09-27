@@ -72,7 +72,7 @@ class StockCalculator {
 			double result_sell = total_cal(sharesell, sellprice);
 			double comm_sell = result_sell * (2.3/100);
 			double total_sell = result_sell - comm_sell;
-			
+
 			System.out.println("\nTotal amount received from the sale (excluding commission) : " + result_sell);
 			System.out.println("Commission paid during sale : " + comm_sell);
 			System.out.println("Total amount after commision : " + total_sell);
@@ -84,12 +84,16 @@ class StockCalculator {
 				System.out.println ("\nCongratulations! You have made a PROFIT of total : " + net_result + "USD");
 
 			} else if (net_result < 0) {
+
 				System.out.println ("\nYou have made a LOSS of total : " + net_result + "USD");
 			} else {
+
 				System.out.println ("\nContra, no PROFIT or LOSS in this stock!");
 			}
+
 			// False input prompt
 		} else {
+
 			System.out.println ("Sorry, Please try again and Enter the correct input");
 			return;
 		}

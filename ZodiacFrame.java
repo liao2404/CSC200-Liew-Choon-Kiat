@@ -10,11 +10,13 @@ import java.util.Scanner;
 
 public class ZodiacFrame {
 
+//Declaration of variables
 	static double peri;
 	static String zodiac;
 	static String symbol;
 	static String name;
 
+//Declarition of fixed costs
 	static final double regular_price = 0.15;
 	static final double fancy_price = 0.25;
 	static final double color_price = 0.10;
@@ -25,6 +27,7 @@ public class ZodiacFrame {
 	static final double engrave_price = 2.50;
 	static final double crown_price = 0.35;
 
+// Zodiac Method
 	static String[] get_zodiac(int month, int day) {
 		String zodiac = "Invalid Date";
 		String symbol = "";
@@ -200,7 +203,7 @@ public class ZodiacFrame {
 			return;
 		}
 
-//consume newline
+//Consume newline
 		customer.nextLine();
 
 //Frame Color Conditions and Costing
@@ -268,7 +271,7 @@ public class ZodiacFrame {
 
 		}
 
-// Total Cost
+//Total Cost
 		double total_cost = frame_cost + color_cost + engrave_cost + crown_cost + cardboard_cost + glass_covering;
 		double rounded_total_cost = Math.round(total_cost / 0.05) * 0.05;
 

@@ -12,8 +12,86 @@ public class ZodiacFrame {
 
 	static double peri;
 	static String zodiac;
-	static String zodiac_symbol;
+	static String symbol;
 	static String name;
+
+	static final double regular_price = 0.15;
+	static final double fancy_price = 0.25;
+	static final double color_price = 0.10;
+	static final double card_labour = 1.00;
+	static final double card_price = 0.02;
+	static final double glass_labour = 1.50;
+	static final double glass_price = 0.05;
+	static final double engrave_price = 2.50;
+	static final double crown_price = 0.35;
+
+	static String[] get_zodiac(int month, int day) {
+		String zodiac = "Invalid Date";
+		String symbol = "";
+
+		if ( (month == 3 && day >= 21) || (month == 4 && day <= 19) ) {
+
+			zodiac = "Aries";
+			symbol = "\u2648";
+
+		} else if ( (month == 4 && day >= 20) || (month == 5 && day <= 20) ) {
+
+			zodiac = "Taurus";
+			symbol = "\u2649";
+
+		} else if ( (month == 5 && day >= 21)|| (month == 6 && day <= 20) ) {
+
+			zodiac = "Gemini";
+			symbol = "\u264A";
+
+		} else if ( (month == 6 && day >= 21) || (month == 7 && day <= 22) ) {
+
+			zodiac = "Cancer";
+			symbol = "\u264B";
+
+		} else if ( (month == 7 && day >= 23) || (month == 8 && day <= 22) ) {
+
+			zodiac = "Leo";
+			symbol = "\u264C";
+
+		} else if ( (month == 8 && day >= 23) || (month == 9 && day <= 22) ) {
+
+			zodiac = "Virgo";
+			symbol = "\u264D";
+
+		} else if ( (month == 9 && day >= 23) || (month == 10 && day <= 22) ) {
+
+			zodiac = "Libra";
+			symbol = "\u264E";
+
+		} else if ( (month == 10 && day >= 23) || (month == 11 && day <= 21) ) {
+
+			zodiac = "Scorpio";
+			symbol = "\u264F";
+
+		} else if ( (month == 11 && day >= 22) || (month == 12 && day <= 21) ) {
+
+			zodiac = "Sagittarius";
+			symbol = "\u2650";
+
+		} else if ( (month == 12 && day >= 22) || (month == 1 && day <= 19) ) {
+
+			zodiac = "Capricorn";
+			symbol = "\u2651";
+
+		} else if ( (month == 1 && day >= 20) || (month == 2 && day <= 18) ) {
+
+			zodiac = "Aquarius";
+			symbol = "\u2652";
+
+		} else if ( (month == 2 && day >= 19) || (month == 3 && day <= 20) )  {
+
+			zodiac = "Pisces";
+			symbol = "\u2653";
+
+		}
+		return new String[] {zodiac, symbol};
+	}
 
 	public static void main(String[] args) {
 		Scanner customer = new Scanner(System.in);
@@ -67,77 +145,15 @@ public class ZodiacFrame {
 //Identify Zodiac
 		int month = group[1];
 		int day = group[2];
+		String[] zodiac_data = get_zodiac(month, day);
+		zodiac = zodiac_data[0];
+		symbol = zodiac_data[1];
 
-		if ( (month == 3 && day >= 21) || (month == 4 && day <= 19) ) {
-
-			zodiac = "Aries";
-			zodiac_symbol = "\u2648";
-
-		} else if ( (month == 4 && day >= 20) || (month == 5 && day <= 20) ) {
-
-			zodiac = "Taurus";
-			zodiac_symbol = "\u2649";
-
-		} else if ( (month == 5 && day >= 21)|| (month == 6 && day <= 20) ) {
-
-			zodiac = "Gemini";
-			zodiac_symbol = "\u264A";
-
-		} else if ( (month == 6 && day >= 21) || (month == 7 && day <= 22) ) {
-
-			zodiac = "Cancer";
-			zodiac_symbol = "\u264B";
-
-		} else if ( (month == 7 && day >= 23) || (month == 8 && day <= 22) ) {
-
-			zodiac = "Leo";
-			zodiac_symbol = "\u264C";
-
-		} else if ( (month == 8 && day >= 23) || (month == 9 && day <= 22) ) {
-
-			zodiac = "Virgo";
-			zodiac_symbol = "\u264D";
-
-		} else if ( (month == 9 && day >= 23) || (month == 10 && day <= 22) ) {
-
-			zodiac = "Libra";
-			zodiac_symbol = "\u264E";
-
-		} else if ( (month == 10 && day >= 23) || (month == 11 && day <= 21) ) {
-
-			zodiac = "Scorpio";
-			zodiac_symbol = "\u264F";
-
-		} else if ( (month == 11 && day >= 22) || (month == 12 && day <= 21) ) {
-
-			zodiac = "Sagittarius";
-			zodiac_symbol = "\u2650";
-
-		} else if ( (month == 12 && day >= 22) || (month == 1 && day <= 19) ) {
-
-			zodiac = "Capricorn";
-			zodiac_symbol = "\u2651";
-
-		} else if ( (month == 1 && day >= 20) || (month == 2 && day <= 18) ) {
-
-			zodiac = "Aquarius";
-			zodiac_symbol = "\u2652";
-
-		} else if ( (month == 2 && day >= 19) || (month == 3 && day <= 20) )  {
-
-			zodiac = "Pisces";
-			zodiac_symbol = "\u2653";
-
-		} else {
-
-			zodiac = "Invalid date";
-
-		}
-		System.out.println("> Zodiac: " + zodiac);
+		System.out.println("> Zodiac: " + zodiac + " " + symbol);
 		System.out.println("");
 
 		/*************************************************************************************
-		 **********************Frame Costing Section******************************************/
+		**********************Frame Costing Section******************************************/
 
 		double length;
 		double width;
@@ -166,17 +182,18 @@ public class ZodiacFrame {
 
 //Frame pattern and cost
 		System.out.println("Choose type of frame? Regular = r || Fancy = f");
-		char type = customer.next().charAt(0);
+		char type = Character.toLowerCase(customer.next().charAt(0));
 
-		if (type == 'r' || type == 'R') {
+		if (type == 'r') {
 
-			frame_cost = 0.15 * peri;
+			frame_cost = regular_price * peri;
 			frame_type = "Regular";
 
-		} else if (type == 'f' || type == 'F') {
+		} else if (type == 'f') {
 
-			frame_cost = 0.25 * peri;
+			frame_cost = fancy_price * peri;
 			frame_type = "Fancy";
+
 		} else {
 
 			System.out.println("Invalid input! Please try again.");
@@ -193,31 +210,35 @@ public class ZodiacFrame {
 		if (! color.isEmpty()) {
 
 			frame_color = color;
-			color_cost = 0.10 * peri;
+
+			if(color.equalsIgnoreCase("white")) {
+				color_cost = 0;
+
+			} else {
+				color_cost = color_price * peri;
+			}
 
 		} else {
-
 			color_cost = 0;
-
 		}
 
 //Cardboard Backing
-		cardboard_cost = 1 + (0.02 * (length * width));
+		cardboard_cost = card_labour + (card_price * (length * width));
 
 //Glass Covering
-		glass_covering = 1.50 + (0.05 * (length * width));
+		glass_covering = glass_labour + (glass_price * (length * width));
 
 		System.out.println("Do you want to add on a zodiac-inspired decorative design? Yes = y || No = n");
-		char engrave = customer.next().charAt(0);
+		char engrave = Character.toLowerCase(customer.next().charAt(0));
 
-		if (engrave == 'y' || engrave == 'Y') {
+		if (engrave == 'y') {
 
-			engrave_cost = 2.50;
+			engrave_cost = engrave_price;
 
-		} else if (engrave == 'n' || engrave == 'N') {
+		} else if (engrave == 'n') {
 
 			engrave_cost = 0;
-			zodiac_symbol = "No Design";
+			symbol = "No Design";
 
 		} else {
 
@@ -227,16 +248,16 @@ public class ZodiacFrame {
 		}
 
 		System.out.println("Do you want to add corner crowns? Yes = y || No = n");
-		char crowns = customer.next().charAt(0);
+		char crowns = Character.toLowerCase(customer.next().charAt(0));
 
 //Crowns condition and calculation
-		if (crowns == 'y' || crowns == 'Y') {
+		if (crowns == 'y') {
 
 			System.out.print("How many corner crowns do you want? ");
 			int corner_crowns = customer.nextInt();
-			crown_cost = 0.35 * corner_crowns;
+			crown_cost = crown_price * corner_crowns;
 
-		} else if (crowns == 'n' || crowns == 'N') {
+		} else if (crowns == 'n') {
 
 			crown_cost = 0;
 
@@ -252,7 +273,7 @@ public class ZodiacFrame {
 		double rounded_total_cost = Math.round(total_cost / 0.05) * 0.05;
 
 		// Call Display
-		display(name, zodiac, frame_type, frame_color, zodiac_symbol, length, width, peri,
+		display(name, zodiac, frame_type, frame_color, symbol, length, width, peri,
 		        frame_cost, color_cost, cardboard_cost, glass_covering,
 		        crown_cost, engrave_cost, rounded_total_cost);
 	}
@@ -276,7 +297,7 @@ public class ZodiacFrame {
 		System.out.printf("Glass Cost      : $%.2f (with labour cost)\n", glass_covering);
 		System.out.printf("Crown Cost      : $%.2f\n", crown_cost);
 		System.out.printf("Zodiac Design   : $%.2f\n", engrave_cost);
-		System.out.println("Zodiac Symbol   : " + zodiac_symbol);
+		System.out.println("Zodiac Symbol   : " + symbol);
 		System.out.println("------------------------------------------------------------");
 		System.out.printf("Total Cost      : $%.2f (after rounding)\n", rounded_total_cost);
 		System.out.println("------------------------------------------------------------");
@@ -284,4 +305,3 @@ public class ZodiacFrame {
 		System.out.println("Your personalized frame has been successfully recorded.");
 	}
 }
-

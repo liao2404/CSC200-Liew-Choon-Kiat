@@ -1,0 +1,66 @@
+import java.util.Scanner;
+
+//Account Attributes
+public class MainAcc {
+    double acc_num;
+    String acc_name;
+    double acc_bal;
+    
+    MainAcc(double i, String n, double j) {
+        acc = i;
+        n = name;
+        j = acc_bal;
+    }
+    
+    //Deposit Method
+    public double deposit (double x) {
+        return acc_bal + x;
+    }
+    
+    //Withdraw Method
+    public double withdraw (double y) {
+        return acc_bal - y;
+    }
+    
+    //Display Method
+    public void display_bal () {
+        System.out.println("Your Account Balance: " + acc_bal);
+    }
+}
+
+//Saving account ( child class )
+public class SavingAcc extends MainAcc {
+    
+    //Method overriding to calculate balance after interest
+    public double add_interest(double a)
+    double annual_rate = 0.04;
+    double daily_rate = annual_rate/365;
+    
+    for (int day = 1; day <=30; day++) {
+        acc_bal = acc_bal + (acc_bal*daily_rate);
+    }
+}
+
+//Current account ( child class )
+public class CurrentAcc extends MainAcc {
+    
+}
+
+public class CityBank
+{
+	public static void main(String[] args) {
+	    Scanner input = new Scanner(System.in);
+	    
+		System.out.println("Welcome to CityBank! - The World's Safest Bank - ");
+		System.out.println("");
+		System.out.println("Please select your occasion today.");
+		System.out.println(" 1 -> Create Account ");
+		System.out.println(" 2 -> Deposit Funds ");
+		System.out.println(" 3 -> Withdraw Funds ");
+		System.out.println(" 4 -> Check Balance ");
+		System.out.println(" 5 -> Exit ");
+
+
+
+	}
+}

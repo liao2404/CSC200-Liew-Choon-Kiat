@@ -2,55 +2,104 @@ import java.util.Scanner;
 
 //Account Attributes
 public class MainAcc {
-    double acc_num;
-    String acc_name;
-    double acc_bal;
-    
-    MainAcc(double i, String n, double j) {
-        acc = i;
-        n = name;
-        j = acc_bal;
-    }
-    
-    //Deposit Method
-    public double deposit (double x) {
-        return acc_bal + x;
-    }
-    
-    //Withdraw Method
-    public double withdraw (double y) {
-        return acc_bal - y;
-    }
-    
-    //Display Method
-    public void display_bal () {
-        System.out.println("Your Account Balance: " + acc_bal);
-    }
+	double acc_num;
+	String acc_name;
+	double acc_bal;
+
+	MainAcc(double num, String name, double bal) {
+		this.acc_num = num;
+		this.acc_name = name;
+		this.acc_bal = bal;
+	}
+
+	//Deposit Method
+	public double deposit (double x) {
+		acc_bal += x;
+		return acc_bal;
+	}
+
+	//Withdraw Method
+	public double withdraw (double y) {
+	    acc_bal -= y;
+		return acc_bal;
+	}
+
+	//Display Method
+	public void display_bal () {
+		System.out.println("Your Account Balance: " + acc_bal);
+	}
 }
 
 //Saving account ( child class )
 public class SavingAcc extends MainAcc {
     
-    //Method overriding to calculate balance after interest
-    public double add_interest(double a)
-    double annual_rate = 0.04;
-    double daily_rate = annual_rate/365;
-    
-    for (int day = 1; day <=30; day++) {
-        acc_bal = acc_bal + (acc_bal*daily_rate);
+    SavingAcc (double num, String name, double bal) {
+        super(num, name, bal);
     }
+
+	//Method overriding to calculate balance after interest
+	// a = account balance
+	public double interest() {
+		double annual_rate = 0.0415;
+		double daily_rate = annual_rate/365;
+
+		for (int day = 1; day <=30; day++) {
+			acc_bal = acc_bal + (acc_bal*daily_rate);
+		}
+		return acc_bal;
+	}
+	
+    //Withdrawal limit
+	public double withdraw(double amount) {
+	    double limit = 50000;
+	    
+	    if ( amount > limit ) {
+	        
+	        System.out.println("Exceeded withdrawal limit perday! ");
+	        return acc_bal;
+	        
+	    } 
+	   
+	    //Safeguard withdrawal amount not exceed balance
+	    if ( acc_bal - amount < 10) {
+	        
+	       System.out.println("Failed to proceed! Account Balance cannot below RM10. ");
+	       return acc_bal;
+
+	    }
+	    
+	    acc_bal -= amount; 
+	    return acc_bal;
+	}
 }
 
 //Current account ( child class )
 public class CurrentAcc extends MainAcc {
     
+    CurrentAcc (double num, String name, double bal) {
+        super(num, name, bal);
+    }
+    
+    //Safeguard withdrawal amount not exceed balance
+    public double withdraw(double amount) {
+        
+        if ( acc_bal - amount >= 10 ) {
+            acc_bal -= amount;
+            return acc_bal;
+            
+        } else {
+            System.out.println("Failed to proceed! Account Balance cannot below RM10. ");
+            return acc_bal;
+        }
+    }
+
 }
 
 public class CityBank
 {
 	public static void main(String[] args) {
-	    Scanner input = new Scanner(System.in);
-	    
+		Scanner input = new Scanner(System.in);
+
 		System.out.println("Welcome to CityBank! - The World's Safest Bank - ");
 		System.out.println("");
 		System.out.println("Please select your occasion today.");
